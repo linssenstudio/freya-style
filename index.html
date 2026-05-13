@@ -5,7 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FREYA POP STYLE · 极简排版</title>
 <style>
-@import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&family=Inter:wght@300;400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Archivo+Black&family=Bebas+Neue&family=Raleway:wght@100;200;300;400;700;900&family=Josefin+Sans:wght@100;200;300;400;600;700&family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@100;200;300;400;700;900&family=Space+Grotesk:wght@300;400;500;700&family=Unbounded:wght@200;400;700;900&family=Italiana&family=Cinzel:wght@400;700;900&display=swap');
+@import url('https://fonts.font.im/css2?family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,700&family=Inter:wght@300;400;500;700;900&family=Noto+Sans+SC:wght@300;400;500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Archivo+Black&family=Bebas+Neue&family=Raleway:wght@100;200;300;400;700;900&family=Josefin+Sans:wght@100;200;300;400;600;700&family=Bodoni+Moda:ital,wght@0,400;0,700;1,400&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Outfit:wght@100;200;300;400;700;900&family=Space+Grotesk:wght@300;400;500;700&family=Unbounded:wght@200;400;700;900&family=Italiana&family=Cinzel:wght@400;700;900&display=swap');
+
+/* 字体降级：任何英文字体加载失败时用系统字体兜底 */
 @font-face {
   font-family: 'Huangyan';
   src: url('https://fonts.gstatic.com/s/bebasneuepro/v3/CNz9x_HfkLp0Zm8RaOQ3vSFkbhk.woff2') format('woff2');
@@ -180,6 +182,68 @@ body {
   transition: transform 0.3s;
 }
 .template-card:hover .geo-icon { transform: scale(1.1); }
+
+/* ================= 自定义模板 ================= */
+.custom-tmpl-grid {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+  margin-top: 8px;
+}
+.custom-tmpl-card {
+  position: relative; padding: 10px 8px 8px;
+  border-radius: 14px; background: rgba(255,255,255,0.4);
+  border: 1px solid var(--glass-border);
+  cursor: pointer; transition: all 0.2s; text-align: center;
+}
+.custom-tmpl-card:hover { background: #fff; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,0.06); }
+.custom-tmpl-thumb {
+  font-size: 18px; margin-bottom: 4px; line-height: 1;
+}
+.custom-tmpl-name {
+  font-size: 10px; font-weight: 600; color: var(--text-main);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+.custom-tmpl-del {
+  position: absolute; top: 4px; right: 4px;
+  width: 16px; height: 16px; border-radius: 50%;
+  background: rgba(0,0,0,0.12); border: none; cursor: pointer;
+  font-size: 8px; color: #555; display: none;
+  align-items: center; justify-content: center;
+  line-height: 1; padding: 0;
+}
+.custom-tmpl-card:hover .custom-tmpl-del { display: flex; }
+.custom-tmpl-del:hover { background: var(--danger); color: #fff; }
+.save-tmpl-btn {
+  width: 100%; margin-top: 10px; padding: 10px;
+  background: rgba(17,17,17,0.06); border: 1px dashed rgba(0,0,0,0.18);
+  border-radius: 12px; font-size: 11px; font-weight: 600;
+  color: var(--text-muted); cursor: pointer; transition: all 0.2s;
+  display: flex; align-items: center; justify-content: center; gap: 6px;
+}
+.save-tmpl-btn:hover { background: #fff; color: #111; border-color: #111; }
+
+/* 命名弹窗 */
+.name-modal-overlay {
+  position: fixed; inset: 0; z-index: 9200;
+  background: rgba(0,0,0,0.4); backdrop-filter: blur(6px);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none; transition: opacity 0.2s;
+}
+.name-modal-overlay.show { opacity: 1; pointer-events: all; }
+.name-modal {
+  background: #F5F2ED; border-radius: 22px;
+  padding: 28px 28px 22px; width: 320px;
+  box-shadow: 0 24px 60px rgba(0,0,0,0.15);
+  border: 1px solid rgba(255,255,255,0.8);
+}
+.name-modal h3 { font-size: 16px; font-weight: 700; margin-bottom: 14px; color: #111; }
+.name-modal input {
+  width: 100%; padding: 12px 14px; border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.12); background: #fff;
+  font-size: 14px; outline: none; box-sizing: border-box;
+  margin-bottom: 14px;
+}
+.name-modal input:focus { border-color: #111; }
+.name-modal-btns { display: flex; gap: 10px; justify-content: flex-end; }
 .template-label { font-size: 11px; font-weight: 600; letter-spacing: 0.5px; text-transform: uppercase; }
 
 /* ================= 参考排版 (新增恢复) ================= */
@@ -563,6 +627,44 @@ body {
 <!-- Supabase SDK -->
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 
+<!-- 字体备用加载：font.im 失败时自动换 loli.net，再失败换 googleapis -->
+<script>
+(function() {
+  const mirrors = [
+    'https://fonts.font.im',
+    'https://fonts.loli.net',
+    'https://fonts.googleapis.com'
+  ];
+  const params = 'css2?family=DM+Sans:opsz,wght@9..40,400;9..40,700&family=Inter:wght@400;700&family=Noto+Sans+SC:wght@300;400;700&family=Bebas+Neue&family=Raleway:wght@300;400;700;900&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,400&family=Unbounded:wght@400;700;900&family=Outfit:wght@300;400;700&family=Josefin+Sans:wght@300;400;700&family=Cinzel:wght@400;700&family=Italiana&family=Space+Grotesk:wght@300;400;700&display=swap';
+
+  let tried = 0;
+  function tryLoad(idx) {
+    if (idx >= mirrors.length) return;
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = mirrors[idx] + '/' + params;
+    link.onerror = () => { tried++; tryLoad(idx + 1); };
+    document.head.appendChild(link);
+  }
+  // 第一个 @import 已经加载了 font.im，这里只做备用
+  // 检测3秒后 Bebas Neue 是否加载成功，没有则强制用备用
+  setTimeout(() => {
+    const test = document.createElement('span');
+    test.style.cssText = 'font-family:"Bebas Neue";position:absolute;visibility:hidden;font-size:72px;';
+    test.textContent = 'FREYA';
+    document.body.appendChild(test);
+    const w1 = test.offsetWidth;
+    test.style.fontFamily = 'sans-serif';
+    const w2 = test.offsetWidth;
+    document.body.removeChild(test);
+    if (Math.abs(w1 - w2) < 2) {
+      // 字体未加载成功，尝试备用镜像
+      tryLoad(1);
+    }
+  }, 3000);
+})();
+</script>
+
 <!-- 登录页 -->
 <div id="loginPage">
   <div class="login-box">
@@ -573,6 +675,18 @@ body {
     <button class="login-btn" id="loginBtn" onclick="doLogin()">登 录</button>
     <div class="login-err" id="loginErr"></div>
     <div class="login-version">FREYA POP STYLE · 内部版</div>
+  </div>
+</div>
+
+<!-- 自定义模板命名弹窗 -->
+<div class="name-modal-overlay" id="nameTmplOverlay" onclick="handleNameOverlayClick(event)">
+  <div class="name-modal">
+    <h3>💾 保存为模板</h3>
+    <input type="text" id="tmplNameInput" placeholder="输入模板名称，如：极简封面" maxlength="20">
+    <div class="name-modal-btns">
+      <button class="pill-btn pill-btn-outline" onclick="closeNameTmplModal()">取消</button>
+      <button class="pill-btn pill-btn-primary" onclick="confirmSaveTmpl()">保存</button>
+    </div>
   </div>
 </div>
 
@@ -700,8 +814,16 @@ body {
       </div>
     </div>
 
+    <!-- 自定义模板 -->
     <div>
-      <div class="section-title">添加素材 Assets</div>
+      <div class="section-title">我的模板 My Templates</div>
+      <div class="custom-tmpl-grid" id="customTmplGrid">
+        <!-- 动态生成 -->
+      </div>
+      <button class="save-tmpl-btn" onclick="openSaveTmplModal()">
+        <span style="font-size:14px;">＋</span> 保存当前排版为模板
+      </button>
+    </div>
       <div class="upload-zone" id="uploadZone" onclick="document.getElementById('fileInput').click()">
         <div class="geo-icon">✚</div>
         <div style="font-size:11px; font-weight:500;">点击或拖拽上传单品</div>
@@ -3703,9 +3825,136 @@ window.saveHistory = function() {
   _origSaveHistoryCloud();
   triggerCloudSave();
 };
+// ==================== 自定义模板 ====================
+const CUSTOM_TMPL_KEY = 'freyaCustomTemplates';
+
+function loadCustomTemplates() {
+  try {
+    return JSON.parse(localStorage.getItem(CUSTOM_TMPL_KEY) || '[]');
+  } catch(e) { return []; }
+}
+
+function saveCustomTemplates(tmpls) {
+  localStorage.setItem(CUSTOM_TMPL_KEY, JSON.stringify(tmpls));
+}
+
+function renderCustomTmplGrid() {
+  const grid = document.getElementById('customTmplGrid');
+  if (!grid) return;
+  const tmpls = loadCustomTemplates();
+  if (tmpls.length === 0) {
+    grid.innerHTML = '<div style="grid-column:1/-1;font-size:11px;color:var(--text-muted);text-align:center;padding:8px 0;">暂无自定义模板</div>';
+    return;
+  }
+  grid.innerHTML = tmpls.map((tmpl, idx) => `
+    <div class="custom-tmpl-card" onclick="applyCustomTmpl(${idx})" title="${escapeHtml(tmpl.name)}">
+      <button class="custom-tmpl-del" onclick="event.stopPropagation(); deleteCustomTmpl(${idx})" title="删除">✕</button>
+      <div class="custom-tmpl-thumb">✦</div>
+      <div class="custom-tmpl-name">${escapeHtml(tmpl.name)}</div>
+    </div>
+  `).join('');
+}
+
+function openSaveTmplModal() {
+  if (state.texts.length === 0) {
+    showToast('请先在画布上添加文字图层');
+    return;
+  }
+  const input = document.getElementById('tmplNameInput');
+  input.value = '';
+  document.getElementById('nameTmplOverlay').classList.add('show');
+  setTimeout(() => input.focus(), 100);
+}
+
+function closeNameTmplModal() {
+  document.getElementById('nameTmplOverlay').classList.remove('show');
+}
+
+function handleNameOverlayClick(e) {
+  if (e.target === document.getElementById('nameTmplOverlay')) closeNameTmplModal();
+}
+
+function confirmSaveTmpl() {
+  const name = document.getElementById('tmplNameInput').value.trim();
+  if (!name) { showToast('请输入模板名称'); return; }
+
+  // 保存当前所有文字图层的完整信息（相对坐标 + 样式）
+  const tmpl = {
+    name,
+    createdAt: new Date().toISOString(),
+    texts: state.texts.map(t => ({...t})),
+    // 记录文字在 layerOrder 里的顺序
+    textOrder: state.layerOrder
+      .filter(r => r.type === 'text')
+      .map(r => r.id)
+  };
+
+  const tmpls = loadCustomTemplates();
+  // 同名则覆盖
+  const existIdx = tmpls.findIndex(t => t.name === name);
+  if (existIdx >= 0) {
+    if (!confirm(`已有同名模板「${name}」，要覆盖吗？`)) return;
+    tmpls[existIdx] = tmpl;
+  } else {
+    tmpls.push(tmpl);
+  }
+  saveCustomTemplates(tmpls);
+  renderCustomTmplGrid();
+  closeNameTmplModal();
+  showToast(`✅ 模板「${name}」已保存`);
+}
+
+function applyCustomTmpl(idx) {
+  const tmpls = loadCustomTemplates();
+  const tmpl = tmpls[idx];
+  if (!tmpl) return;
+
+  // 清除当前所有文字图层
+  state.texts = [];
+  state.layerOrder = state.layerOrder.filter(r => r.type === 'item');
+
+  // 用新 id 重新添加文字（避免 id 冲突）
+  const idMap = {};
+  tmpl.texts.forEach(t => {
+    const newId = state.nextId++;
+    idMap[t.id] = newId;
+    state.texts.push({ ...t, id: newId });
+  });
+
+  // 按原顺序插入 layerOrder
+  const orderedTextRefs = (tmpl.textOrder || tmpl.texts.map(t => t.id))
+    .map(oldId => ({ type: 'text', id: idMap[oldId] }))
+    .filter(r => r.id !== undefined);
+  state.layerOrder.push(...orderedTextRefs);
+
+  // 取消选中，刷新界面
+  state.selected = null;
+  renderLayerList();
+  renderInspector();
+  render();
+  saveHistory();
+  showToast(`已应用模板「${tmpl.name}」`);
+}
+
+function deleteCustomTmpl(idx) {
+  const tmpls = loadCustomTemplates();
+  const name = tmpls[idx]?.name;
+  if (!confirm(`确定删除模板「${name}」吗？`)) return;
+  tmpls.splice(idx, 1);
+  saveCustomTemplates(tmpls);
+  renderCustomTmplGrid();
+  showToast('模板已删除');
+}
+
+// Enter 键确认保存模板
+document.getElementById('tmplNameInput')?.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') confirmSaveTmpl();
+});
+
 // ==================== BOOT ====================
 saveHistory();
 render();
+renderCustomTmplGrid();
 checkSession(); // 检查已有登录状态
 </script>
 </body>
