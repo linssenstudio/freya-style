@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Thinking Map V3 · 架构图</title>
+<style>
+*{box-sizing:border-box}html,body{margin:0;background:#e8e8e3;color:#202c35;font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}.canvas{width:min(100%,1600px);min-width:1000px;margin:auto;aspect-ratio:16/9}svg{display:block;width:100%;height:auto;background:#faf9f5}.boundary{fill:#f0f1ec;stroke:#d9ded5;stroke-width:1.5}.band{fill:#dce7df}.group-title{font-size:22px;font-weight:650;fill:#2b5142}.node rect{fill:white;stroke:#9eafa5;stroke-width:1.5}.node-title{font-size:27px;font-weight:600;fill:#202e28}.sub{font-size:18px;fill:#53665b}.flow,.feedback{fill:none;stroke:#3e6553;stroke-width:2.5;stroke-linejoin:round}.feedback{stroke:#a65b38;stroke-dasharray:8 6}.edge-label{font-size:19px;fill:#334a3e;paint-order:stroke;stroke:#faf9f5;stroke-width:9px;stroke-linejoin:round}.title{font-size:38px;font-weight:650;fill:#20362b}.kicker{font-size:16px;letter-spacing:3px;fill:#52685b}@page{size:1600px 900px;margin:0}@media print{body{background:white}.canvas{width:1600px;min-width:0;margin:0;break-inside:avoid}svg{height:900px}}
+</style></head><body><main class="canvas"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" role="img" aria-labelledby="title description">
+<title id="title">Thinking Map V3 架构：输入、建模、审查与交付</title><desc id="description">想法进入目标定义，结合结构证据形成架构模型，审查通过后渲染，验证后交付。审查不通过返回模型，验证不通过返回渲染。所有箭头标注关系。</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#3e6553"/></marker><marker id="return" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M0 0L10 5L0 10Z" fill="#a65b38"/></marker></defs>
+<text x="60" y="59" class="kicker">THINKING MAP / V3</text><text x="60" y="112" class="title">从想法到架构：模块、关系与交付</text>
+<rect class="boundary" x="60" y="165" width="300" height="680" rx="20"/><rect class="band" x="72" y="177" width="276" height="48" rx="10"/><text class="group-title" x="88" y="209">01 / 输入</text>
+<rect class="boundary" x="410" y="165" width="690" height="680" rx="20"/><rect class="band" x="422" y="177" width="666" height="48" rx="10"/><text class="group-title" x="438" y="209">02 / 架构引擎</text>
+<rect class="boundary" x="1150" y="165" width="390" height="680" rx="20"/><rect class="band" x="1162" y="177" width="366" height="48" rx="10"/><text class="group-title" x="1178" y="209">03 / 可视化交付</text>
+<g class="edge"><path d="M340 305 H450" class="flow" marker-end="url(#arrow)"/><text x="395" y="291" class="edge-label" text-anchor="middle">提交</text></g>
+<g class="edge"><path d="M710 305 H800" class="flow" marker-end="url(#arrow)"/><text x="755" y="291" class="edge-label" text-anchor="middle">定义范围</text></g>
+<g class="edge"><path d="M580 560 V350" class="flow" marker-end="url(#arrow)"/><text x="580" y="460" class="edge-label" text-anchor="middle">补充证据</text></g>
+<g class="edge"><path d="M930 350 V560" class="flow" marker-end="url(#arrow)"/><text x="930" y="460" class="edge-label" text-anchor="middle">提交审查</text></g>
+<g class="edge"><path d="M1060 605 H1125 V305 H1200" class="flow" marker-end="url(#arrow)"/><text x="1125" y="460" class="edge-label" text-anchor="middle">通过</text></g>
+<g class="edge"><path d="M800 610 H770 V370 H850 V350" class="feedback" marker-end="url(#return)"/><text x="823" y="389" class="edge-label" text-anchor="middle">修订模型</text></g>
+<g class="edge"><path d="M1330 350 V560" class="flow" marker-end="url(#arrow)"/><text x="1330" y="460" class="edge-label" text-anchor="middle">送检</text></g>
+<g class="edge"><path d="M1460 605 H1505 V305 H1460" class="feedback" marker-end="url(#return)"/><text x="1475" y="520" class="edge-label" text-anchor="middle">重新渲染</text></g>
+<g class="edge"><path d="M1330 650 V745" class="flow" marker-end="url(#arrow)"/><text x="1330" y="707" class="edge-label" text-anchor="middle">验证通过</text></g>
+<g id="input" class="node"><rect x="80" y="260" width="260" height="90" rx="14"/><text x="104" y="298" class="node-title">原始想法</text><text x="104" y="326" class="sub">用户目标 · 项目上下文</text></g>
+<g id="frame" class="node"><rect x="450" y="260" width="260" height="90" rx="14"/><text x="474" y="298" class="node-title">目标与范围</text><text x="474" y="326" class="sub">明确问题、约束与边界</text></g>
+<g id="model" class="node"><rect x="800" y="260" width="260" height="90" rx="14"/><text x="824" y="298" class="node-title">架构模型</text><text x="824" y="326" class="sub">模块 · 分组 · 关系 · 依赖</text></g>
+<g id="render" class="node"><rect x="1200" y="260" width="260" height="90" rx="14"/><text x="1224" y="298" class="node-title">HTML 渲染</text><text x="1224" y="326" class="sub">选择图形 · 布局 · 连线</text></g>
+<g id="evidence" class="node"><rect x="450" y="560" width="260" height="90" rx="14"/><text x="474" y="598" class="node-title">结构证据</text><text x="474" y="626" class="sub">上下文 + 按需外部研究</text></g>
+<g id="critique" class="node"><rect x="800" y="560" width="260" height="90" rx="14"/><text x="824" y="598" class="node-title">架构审查</text><text x="824" y="626" class="sub">完整性 · 依赖 · 抽象层级</text></g>
+<g id="validate" class="node"><rect x="1200" y="560" width="260" height="90" rx="14"/><text x="1224" y="598" class="node-title">图形验证</text><text x="1224" y="626" class="sub">箭头 · 标签 · 可读性</text></g>
+<g id="output" class="node"><rect x="1200" y="745" width="260" height="90" rx="14"/><text x="1224" y="783" class="node-title">架构图 HTML</text><text x="1224" y="811" class="sub">全宽 16:9 · 单文件离线</text></g></svg></main></body></html>
